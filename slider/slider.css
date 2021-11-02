@@ -1,0 +1,47 @@
+.slideTrack {
+  background: black;
+  height: 420px;
+  width: 5px;
+  margin-left: 60px;
+  position: fixed;
+  border-radius: 100px;
+  z-index: -1;
+}
+.numberMarker {
+  display: flex;
+  background: grey;
+  margin-left: 10px;
+  align-self: center;
+  height: 2px;
+  width: 16px;
+  z-index: -1;
+}
+.numberContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 420px;
+  columns: 2;
+}
+.markerContainer {
+  display: flex;
+  justify-content: flex-end;
+  width: 50px;
+}
+.sliderButton {
+  margin-left: 44px;
+  height: 70px;
+  width: 40px;
+  background-color: #e7e7e7;
+  color: black;
+  border-radius: 3px;
+  box-shadow: 1px 1px #999999;
+  z-index: -1;
+  margin-top: -100px;
+}
+.line {
+  width: 40px;
+  height: 35px;
+  border-bottom: 2px solid #999999;
+  position: absolute;
+}
