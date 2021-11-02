@@ -11,28 +11,7 @@ slider.addEventListener('mouseup', function(e) {
 });
 window.addEventListener('mousemove', function(e) {
   if (dragging) {
-      // current knob offset, relative to track
-      var offset = e.movementY - trackLeft - knobOffset;
-      if(offset < 0) {
-        var offset = 0;
-      } else if(offset > maxRight) {
-        var offset = maxRight;
-      }
-        
+      let offset = e.movementY
       slider.style.transform = `transformY${offset}px`
   }
 });
-const toggleMoveSlider = (e) => {
-  let yShift = instanceOfMouseEvent.movementY;
-  sliderElement.addEventListener('onmousedown', function (event) {
-  moveSlider(yShift);
-   console.log('message from click')
-});
-};
-const moveSlider = (yPos) => {
-  sliderElement.style.transform = "translateY("yPos"px)";
-};
-
-// sliderButton.onmousedown = toggleMoveSlider;
-// sliderButton.onmousemove = moveSlider;
-// sliderButton.onmouseup = toggleMoveSlider;
