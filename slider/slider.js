@@ -1,38 +1,46 @@
-let dragging = false;
-let sliderOffset = 0;
-const sliderElement = document.getElementsById('slider');
-const trackElement = document.getElementsById('slideTrack');
+// Make DIV element (id slider) draggable:
+dragElement(document.getElementById("sliderKnob"));
 
-slider.addEventListener('mousedown', function(e) {
-    dragging = true;
-});
-slider.addEventListener('mouseup', function(e) {
-    dragging = false;
-});
-window.addEventListener('mousemove', function(e) {
-  if (dragging) {
-      // current knob offset, relative to track
-      var offset = e.movementY - trackLeft - knobOffset;
-      if(offset < 0) {
-        var offset = 0;
-      } else if(offset > maxRight) {
-        var offset = maxRight;
-      }
-        
-      slider.style.transform = `transformY${offset}px`
+function dragElement(elmnt) {
+  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+  
+  if (document.getElementById('slider')) {
+    // if present, the header is where you move the DIV from:
+    document.getElementById('slider').onmousedown = dragMouseDown;
+    
+  } else {
+    // otherwise, move the DIV from anywhere inside the DIV:
+    elmnt.onmousedown = dragMouseDown;
+    console.log(pos2)
   }
-});
-const toggleMoveSlider = (e) => {
-  let yShift = instanceOfMouseEvent.movementY;
-  sliderElement.addEventListener('onmousedown', function (event) {
-  moveSlider(yShift);
-   console.log('message from click')
-});
-};
-const moveSlider = (yPos) => {
-  sliderElement.style.transform = "translateY("yPos"px)";
-};
 
-// sliderButton.onmousedown = toggleMoveSlider;
-// sliderButton.onmousemove = moveSlider;
-// sliderButton.onmouseup = toggleMoveSlider;
+  function dragMouseDown(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // get the mouse cursor position at startup:
+    // pos3 = e.clientX;
+    pos4 = e.clientY;
+    document.onmouseup = closeDragElement;
+    // call a function whenever the cursor moves:
+    document.onmousemove = elementDrag;
+  }
+
+  function elementDrag(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // calculate the new cursor position:
+    // pos1 = pos3 - e.clientX;
+    pos2 = pos4 - e.clientY;
+    // pos3 = e.clientX;
+    pos4 = e.clientY;
+    // set the element's new position:
+    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+    // elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+  }
+
+  function closeDragElement() {
+    // stop moving when mouse button is released:
+    document.onmouseup = null;
+    document.onmousemove = null;
+  }
+}
