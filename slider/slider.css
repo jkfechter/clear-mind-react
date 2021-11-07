@@ -1,15 +1,19 @@
+body{
+  background: #264653;
+  font-family: 'Open Sans', sans-serif; 
+}
 .slideTrack {
-  background: black;
+  background: #e9c46a;
   height: 420px;
   width: 5px;
   margin-left: 60px;
-  position: fixed;
+  position: absolute;
   border-radius: 100px;
   z-index: -1;
 }
 .numberMarker {
   display: flex;
-  background: grey;
+  background: #f4a261;
   margin-left: 10px;
   align-self: center;
   height: 2px;
@@ -22,26 +26,28 @@
   justify-content: space-between;
   height: 420px;
   columns: 2;
+  color: #e9c46a;
 }
 .markerContainer {
   display: flex;
   justify-content: flex-end;
   width: 50px;
 }
-.sliderButton {
-  margin-left: 44px;
+#sliderKnob {
+  margin-left: 42px;
   height: 70px;
   width: 40px;
-  background-color: #e7e7e7;
+  background-color: #2a9d8f;
   color: black;
   border-radius: 3px;
-  box-shadow: 1px 1px #999999;
-  z-index: -1;
-  margin-top: -100px;
+  box-shadow: 1px 1px #134943;
+  z-index: 9;
+  position: absolute;
+  cursor: pointer;
 }
 .line {
   width: 40px;
   height: 35px;
-  border-bottom: 2px solid #999999;
+  border-bottom: 2px solid #134943;
   position: absolute;
 }
